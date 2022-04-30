@@ -52,5 +52,38 @@ IRQType getIRQType(Port port){
     return (IRQType)GET_MASK_VALUE(xxxPortArray[port.base]->PCR[port.bit],PORT_PCR_IRQC_MASK,  PORT_PCR_IRQC_SHIFT);
 }
 //--------
+void setHighDriveStrength(Port port){
+    xxxPortArray[port.base]->PCR[port.bit] |= PORT_PCR_DSE_MASK;
+}
+bit_t getDriveStrength(Port port){
+    return (bit_t)GET_MASK_VALUE(xxxPortArray[port.base]->PCR[port.bit],PORT_PCR_DSE_MASK,  PORT_PCR_DSE_SHIFT);
+}
+//--------
+void setSlowSlewRate(Port port){
+    xxxPortArray[port.base]->PCR[port.bit] |= PORT_PCR_SRE_MASK;
+}
+bit_t getSlewRate(Port port){
+    return (bit_t)GET_MASK_VALUE(xxxPortArray[port.base]->PCR[port.bit],PORT_PCR_SRE_MASK,  PORT_PCR_SRE_SHIFT);
+}//--------
+void setPullEnable(Port port){
+    xxxPortArray[port.base]->PCR[port.bit] |= PORT_PCR_PE_MASK;
+}
+bit_t getPullEnable(Port port){
+    return (bit_t)GET_MASK_VALUE(xxxPortArray[port.base]->PCR[port.bit],PORT_PCR_PE_MASK,  PORT_PCR_PE_SHIFT);
+}//--------
+void setPullSelect(Port port){
+    xxxPortArray[port.base]->PCR[port.bit] |= PORT_PCR_PS_MASK;
+}
+bit_t getPullSelect(Port port){
+    return (bit_t)GET_MASK_VALUE(xxxPortArray[port.base]->PCR[port.bit],PORT_PCR_PS_MASK,  PORT_PCR_PS_SHIFT);
+}
+//--------
+void setPassiveFilter(Port port){
+    xxxPortArray[port.base]->PCR[port.bit] |= PORT_PCR_PFE_MASK;
+}
+bit_t getPassiveFilter(Port port){
+    return (bit_t)GET_MASK_VALUE(xxxPortArray[port.base]->PCR[port.bit],PORT_PCR_PFE_MASK,  PORT_PCR_PFE_SHIFT);
+}
+//--------
 
 

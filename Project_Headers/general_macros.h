@@ -2,7 +2,6 @@
 #ifndef GENERAL_MACROS_H_
 #define GENERAL_MACROS_H_
 
-#include <assert.h>
 #include <stdint.h>
 
 // our definitions
@@ -138,8 +137,8 @@ typedef struct {
 #define IRQ_ENABLE              0X13
 #define IRQ_DISABLE             0X0
 
-#define PULL_UP            		IRQ_CONFIG_FALLING_EDGE
-#define PULL_DOWN           	IRQ_CONFIG_RISING_EDGE
+// #define PULL_UP            		IRQ_CONFIG_FALLING_EDGE
+// #define PULL_DOWN           	IRQ_CONFIG_RISING_EDGE
 
 
 typedef enum {

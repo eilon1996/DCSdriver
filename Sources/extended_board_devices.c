@@ -5,6 +5,7 @@ void initPushButton(uint8_t push_button_id){
     setDiraction(PushButtons[push_button_id], INPUT);
     setPortRole(PushButtons[push_button_id], GPIO_ROLE);
     setIRQType(PushButtons[push_button_id], PUSH_BUTTON_DEFAULT_EDGE(push_button_id));
+    setPassiveFilter(PushButtons[push_button_id]);
 }
 
 void initSwitch(uint8_t switch_id){
@@ -17,9 +18,9 @@ void initLed(uint8_t led_id){
     setDiraction(Leds[led_id], OUTPUT);
     setPortRole(Leds[led_id], GPIO_ROLE);
     setOutputData(Leds[led_id], 0);
+    setHighDriveStrength(Leds[led_id]);
+    setSlowSlewRate(Leds[led_id]);
 }
-
-
 
 //---------------------
 

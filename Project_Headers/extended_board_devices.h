@@ -5,7 +5,7 @@
 #include "MKL25Z4_registers.h"
 #include "connection_map.h"
 
-#define PUSH_BUTTON_DEFAULT_EDGE(push_button_id) ((push_button_id==0 || push_button_id==1)?(INTERRUPT_ON_RISING_EDGE):(INTERRUPT_ON_FALLIING_EDGE))
+#define PUSH_BUTTON_DEFAULT_EDGE(push_button_id) ((push_button_id==0 || push_button_id==1)?(INTERRUPT_ON_FALLIING_EDGE):(INTERRUPT_ON_RISING_EDGE))
 
 typedef enum {
     DEVICE_NOT_FOUND = 0,

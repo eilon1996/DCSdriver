@@ -41,4 +41,20 @@ PortRole getPortRole(Port port);
 //--------
 void setIRQType(Port port, IRQType irqType);
 IRQType getIRQType(Port port);
+//--------
+void setHighDriveStrength(Port port);
+bit_t getDriveStrength(Port port);
+//--------
+void setSlowSlewRate(Port port);
+//--------
+void setPullEnable(Port port);
+bit_t getPullEnable(Port port);
+void setPullSelect(Port port);
+bit_t getPullSelect(Port port);
+//--------
+void setPassiveFilter(Port port);
+bit_t getPassiveFilter(Port port);
+//--------
+
+
 #endif
