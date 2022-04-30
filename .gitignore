@@ -1,0 +1,6 @@
+*
+!.gitignore
+!Project_Headers
+!Project_Headers/*
+!Sources
+!Sources/*
