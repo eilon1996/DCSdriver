@@ -12,6 +12,7 @@ void initSwitch(uint8_t switch_id){
     setDiraction(Switches[switch_id], INPUT);
     setPortRole(Switches[switch_id], GPIO_ROLE);
     setIRQType(Switches[switch_id], INTERRUPT_ON_EITHER_EDGE);
+    setPassiveFilter(Switches[switch_id]);
 }
 
 void initLed(uint8_t led_id){
@@ -21,6 +22,23 @@ void initLed(uint8_t led_id){
     setHighDriveStrength(Leds[led_id]);
     setSlowSlewRate(Leds[led_id]);
 }
+
+
+void initInputCapture(uint8_t push_button_id){  // TODO
+    setDiraction(PushButtons[push_button_id], INPUT);
+    setPortRole(PushButtons[push_button_id], GPIO_ROLE);
+    setIRQType(PushButtons[push_button_id], PUSH_BUTTON_DEFAULT_EDGE(push_button_id));
+    setPassiveFilter(PushButtons[push_button_id]);
+}
+
+void initOutputPWM(uint8_t push_button_id){  // TODO
+    setDiraction(PushButtons[push_button_id], INPUT);
+    setPortRole(PushButtons[push_button_id], GPIO_ROLE);
+    setIRQType(PushButtons[push_button_id], PUSH_BUTTON_DEFAULT_EDGE(push_button_id));
+    setPassiveFilter(PushButtons[push_button_id]);
+}
+
+
 
 //---------------------
 

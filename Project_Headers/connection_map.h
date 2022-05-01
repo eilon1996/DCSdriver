@@ -9,11 +9,11 @@
 
 #define NOT_USED NULL
 
-#define P1_0  {BASE_D, 0}
+#define P1_0  {BASE_D, 2}
 #define P1_1  {BASE_D, 3}
-#define P1_2  {BASE_A, 1}
-#define P1_3  {BASE_A, 1}
-#define P1_4  {BASE_B, 0}
+#define P1_2  {BASE_D, 1}
+#define P1_3  {BASE_D, 1}
+#define P1_4  {BASE_C, 1}
 #define P1_5  NOT_USED
 #define P1_6  NOT_USED
 #define P1_7  NOT_USED

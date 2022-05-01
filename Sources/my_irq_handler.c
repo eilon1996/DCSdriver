@@ -18,8 +18,14 @@ void handle_IRQ(DeviceId deviceId){
     {
         case PUSH_BUTTON_0:
             toggleLed(0);
+            break;
             //LED_0_PDOR = !LED_0_PDOR;
         case PUSH_BUTTON_1:
+            toggleLed(0);
+            break;
+        case PUSH_BUTTON_2:
+            toggleLed(0);
+            break;
             //LED_0_PDOR = 1;
     default:
         //assert(0);
