@@ -13,6 +13,8 @@
 
 /***********************************************************************/
 // function prototypes for arm_cm0.c
+void GIE(void);
+void GID(void);
 void stop (void);
 void wait (void);
 void write_vtor (int);

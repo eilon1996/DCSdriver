@@ -4,6 +4,7 @@
 #include "my_irq_handler.h"
 #include "extended_board_devices.h"
 #include "timers.h"
+#include "lcd.h"
 
 void initGPIO();
 

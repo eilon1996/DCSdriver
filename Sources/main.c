@@ -16,6 +16,7 @@
 int main(void)
 {
 	initGPIO();
+	lcd_data('a');
 	for(;;) {
 		//setPITCountTo(0, 0x01FAF080);
 		//toggleLed(0);
