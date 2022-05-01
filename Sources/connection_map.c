@@ -18,7 +18,7 @@ Port Switches[4] = {
                             };
 
 Port Leds[8] = {
-                                P1_4,
+                                P2_3,
                                 P2_1,
                                 P2_2,
                                 P2_3,

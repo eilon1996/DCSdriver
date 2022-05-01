@@ -4,7 +4,7 @@
 
 #include "MKL25Z4_registers.h"
 #include "connection_map.h"
-
+#include "extended_board_devices.h"
 
 #define LCD_WAIT DelayMs(5)
 

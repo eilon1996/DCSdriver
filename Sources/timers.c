@@ -14,23 +14,32 @@ uint16_t getCaptureTime(uint8_t tpm_id, uint8_t channel){return tpm_Array[tpm_id
 void setPTMCompareValue(uint8_t tpm_id, uint8_t channel, uint16_t value){tpm_Array[tpm_id]->CONTROLS[channel].CnV |= value;}
 bit_t getChannelIRQFlag(uint8_t tpm_id, uint8_t channel){return GET_BIT_VALUE(tpm_Array[tpm_id]->STATUS, channel);}
 bit_t getChannelIRQFlag_TOF(uint8_t tpm_id, uint8_t channel){return GET_BIT_VALUE(tpm_Array[tpm_id]->STATUS, 8);}
-void setPTMToworkInDebug(uint8_t tpm_id){WRITE_MASK(tpm_Array[tpm_id]->CONF, TPM_CONF_DBGMODE_MASK, TPM_CONF_DBGMODE_SHIFT, PTMOnDebug_WORK);}
+void setPTMToWorkInDebug(uint8_t tpm_id){WRITE_MASK(tpm_Array[tpm_id]->CONF, TPM_CONF_DBGMODE_MASK, TPM_CONF_DBGMODE_SHIFT, PTMOnDebug_WORK);}
 void PTMKeepCountingAfterOverFlow(uint8_t tpm_id){WRITE_MASK(tpm_Array[tpm_id]->CONF, TPM_CONF_CSOO_MASK, TPM_CONF_CSOO_SHIFT, 1);}
 void reloadCounterOnTrigger(uint8_t tpm_id){WRITE_MASK(tpm_Array[tpm_id]->CONF, TPM_CONF_CROT_MASK, TPM_CONF_CROT_SHIFT, 1);}
 void enableClockToPTM(){ SIM_SCGC6 |= SIM_SCGC6_TPM0_MASK | SIM_SCGC6_TPM1_MASK | SIM_SCGC6_TPM2_MASK;}
 
 void InitTPM_PWMOutput(uint8_t tpm_id, uint8_t channel){
 	enableClockToPTM();
-	setPrescale(tpm_id, DEVICE_CLOCK_BY_128);
+	setPrescale(tpm_id, DEVICE_CLOCK_BY_8);
 	enablePTMInterrupt(tpm_id);
 	setPTMChannelConfig(tpm_id, channel, EDGE_ALIGNED_PWM_HIGH_TRUE);
-	setPTMToworkInDebug(tpm_id);
+	setPTMToWorkInDebug(tpm_id);
 	enablePTMCounterInternal(tpm_id);
     //setPTMCompareValue(tpm_id, channel, 0xFFFF);	// is this a key word or not?
 	//setPTMCountTo(tpm_id, 0x2EE0);
 }
 
-
+void InitTPM_InputCapture(char x, Port port){  // x={0,1,2}
+	TPM0_SC &=~ 0x1FF; // to ensure that the counter is not running
+	//TPM0_SC |= TPM_SC_PS(3)+TPM_SC_TOIE_MASK; //Prescaler =128, up-mode, counter-disable
+	//(?)TPM0_MOD = MUDULO_REGISTER; // PWM frequency of 250Hz = 24MHz/(8x12,000)
+	TPM0_C0SC &=~  BIT(5) + BIT(4) + BIT(3) + BIT(0);
+	TPM0_C0SC |=  BIT(2) + BIT(6);
+	//TPM0_CONF = 0;
+	PORTC_PCR5 = PORT_PCR_MUX(4);       //P2.4
+	//port
+}
 
 void selectClockSource(ClockSource source){WRITE_MASK(SIM_SOPT2, SIM_SOPT2_TPMSRC_MASK,SIM_SOPT2_TPMSRC_SHIFT, source&0X3); WRITE_MASK(SIM_SOPT2, SIM_SOPT2_PLLFLLSEL_MASK,SIM_SOPT2_PLLFLLSEL_SHIFT, (source==MCGFLLCLK_DIV2));}
 

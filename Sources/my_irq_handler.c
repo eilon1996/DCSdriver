@@ -17,14 +17,14 @@ void handle_IRQ(DeviceId deviceId){
     switch (deviceId)
     {
         case PUSH_BUTTON_0:
-            toggleLed(0);
+            //toggleLed(0);
             break;
             //LED_0_PDOR = !LED_0_PDOR;
         case PUSH_BUTTON_1:
-            toggleLed(0);
+            //toggleLed(0);
             break;
         case PUSH_BUTTON_2:
-            toggleLed(0);
+            //toggleLed(0);
             break;
             //LED_0_PDOR = 1;
     default:
@@ -50,4 +50,25 @@ void PORTA_IRQHandler(void){
     delaySec(debounceVal);
     DeviceId deviceId = get_IRQ_source(BASE_A);
     handle_IRQ(deviceId);
+}
+
+
+
+void FTM0_IRQHandler(){
+    //static int freqVal = 0;
+    //static int currentFreq = 0;
+    //unsigned int tempFreq;
+
+    int currentCount;
+
+    if (TPM0_C0SC&0x80){
+        currentCount = TPM0_C0V;                // Holds the value of the TPMcounter - input capture mode
+        // LCDupdatefreq();
+        TPM0_C0SC |= 0x80;                     //clear CHF bit
+
+    }
+        //tempFreq = CPUFREQ / FTM0_C0V;
+        //currentFreq = (abs(currentFreq-freqVal) > 1) ? freqVal : currentFreq;
+
+        //lcd_puts("Measured frquency\n%d [Hz]", currentFreq);
 }

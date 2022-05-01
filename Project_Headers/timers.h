@@ -49,6 +49,7 @@ typedef enum{
 
 void InitPIT();
 void InitTPM_PWMOutput(uint8_t tpm_id, uint8_t channel);
+void InitTPM_InputCapture(char x, Port port);
 void initSIM();
 
 void setPITCountTo(uint8_t countToIndex, uint32_t countTo);

@@ -37,7 +37,6 @@ void lcd_write_char_to_data_pins(unsigned char c){
 void lcd_cmd(unsigned char c){
 
 	LCD_WAIT; // may check LCD busy flag, or just delay a little, depending on lcd.h
-
 	if (LCD_MODE == FOURBIT_MODE)
 	{
 		lcd_write_char_to_data_pins(c);
@@ -50,7 +49,7 @@ void lcd_data(unsigned char c){
 
 	LCD_WAIT; // may check LCD busy flag, or just delay a little, depending on lcd.h
 
-	lcd_clear_output_data_pins(0xF);
+	lcd_clear_output_data_pins();
 	setOutputData(lcd.reset, 1);
 	if (LCD_MODE == FOURBIT_MODE)
 	{
@@ -111,8 +110,8 @@ void lcd_init(){
 //******************************************************************
 void DelayUs(unsigned int cnt){
 
-	unsigned char i;
-        for(i=cnt ; i>0 ; i--) asm("nop"); // tha command asm("nop") takes raphly 1usec
+	volatile uint32_t i;
+    for(i=cnt ; i>0 ; i--) asm("nop"); // tha command asm("nop") takes raphly 1usec
 
 }
 //******************************************************************
@@ -121,7 +120,10 @@ void DelayUs(unsigned int cnt){
 void DelayMs(unsigned int cnt){
 
 	unsigned char i;
-    for(i=cnt ; i>0 ; i--) DelayUs(1000); // tha command asm("nop") takes raphly 1usec
+    for(i=cnt ; i>0 ; i--) {
+		DelayUs(2160);
+		toggleLed(0);
+	} // tha command asm("nop") takes raphly 1usec
 
 }
 //******************************************************************

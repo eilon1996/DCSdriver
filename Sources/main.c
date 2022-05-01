@@ -16,11 +16,11 @@
 int main(void)
 {
 	initGPIO();
-	lcd_data('a');
+	//lcd_data('a');
 	for(;;) {
+		DelayMs(1000);
 		//setPITCountTo(0, 0x01FAF080);
 		//toggleLed(0);
-
 	}
 
 	return 0;

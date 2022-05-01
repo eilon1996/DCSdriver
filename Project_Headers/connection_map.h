@@ -33,10 +33,10 @@ typedef struct
 #define P1_6  {BASE_E, 30}   //d6
 #define P1_7  {BASE_E, 29}   //d7
 
-#define P2_0  {BASE_A, 1}
+#define P2_0  {BASE_C, 5}        // test input pwm
 #define P2_1  {BASE_A, 2}
 #define P2_2  {BASE_A, 1}
-#define P2_3  {BASE_A, 1}
+#define P2_3  {BASE_C, 4}   // test output pwm
 #define P2_4  {BASE_C, 5}
 #define P2_5  {BASE_C, 6}       //e -
 #define P2_6  {BASE_C, 10}      //rst
